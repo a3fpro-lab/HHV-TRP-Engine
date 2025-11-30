@@ -582,3 +582,27 @@ git clone https://github.com/<your-username>/HHV-TRP-Engine.git
 cd HHV-TRP-Engine
 pip install -r requirements.txt pytest
 pytest
+
+### TRP decomposition and gauge freedom
+
+The TRP law is multiplicative:
+\[
+T = R \times P.
+\]
+Only \(T\) is physically constrained by the viability bound
+\(T \ge T_{\min}\). Any rescaling
+\[
+R \rightarrow a\,R,\qquad P \rightarrow \frac{1}{a}\,P
+\]
+leaves \(T\) invariant. This defines a one-parameter "gauge
+freedom" in how we assign difficulty to the external world (R)
+versus internal processing (P).
+
+In this repo we fix that freedom by convention:
+- \(R(N_e,H_I)\) depends only on exit-geometry entropy,
+- \(P(\epsilon)\) depends only on curvature complexity.
+
+Given any two of \((T,R,P)\), the third is uniquely determined:
+\[
+R = \frac{T}{P},\quad P = \frac{T}{R},\quad \log T = \log R + \log P.
+\]
