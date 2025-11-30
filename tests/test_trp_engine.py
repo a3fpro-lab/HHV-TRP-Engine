@@ -1,5 +1,4 @@
-"""
-tests/test_trp_engine.py
+
 
 Basic tests for the HHV–TRP engine.
 
