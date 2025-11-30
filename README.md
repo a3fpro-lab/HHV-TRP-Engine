@@ -1,6 +1,5 @@
-![CI](https://github.com/<A3FPro-lab>/HHV-TRP-Engine/actions/workflows/ci.yml/badge.svg)
 
-# HHV–TRP Engine
+
 
 # HHV–TRP Engine
 
