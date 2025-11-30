@@ -1,0 +1,29 @@
+7. What HHV–TRP does and does not do
+
+7.1 Positive claims
+
+This repository provides:
+	1.	A fully explicit, test-covered Python implementation of a TRP-type
+selection factor on top of Hartle–Hawking-style exit geometries.
+	2.	A clear, documented mapping from CMB-like inputs ((A_s, r, N_e)) to a bound
+on exit anisotropy (\epsilon_{\max}(N_e,H_I)).
+	3.	A reusable interface for feeding in anisotropy predictions from more detailed
+Hartle–Hawking/tunneling computations (e.g. numeric minisuperspace with
+Bianchi IX, vector fields, etc.) and obtaining a TRP-based viability test.
+
+7.2 Non-claims / limitations
+
+This repository does not:
+	•	Derive (\mu) or the quadratic complexity functional (C(\epsilon)) from a
+microscopic theory of quantum gravity.
+	•	Assert that the TRP bound supersedes or improves upon existing CMB constraints
+on anisotropy or (r); it is an observer-centric selection layer, not a
+replacement for standard likelihood analyses.
+	•	Provide a complete measure on the space of all exit geometries; it is meant to
+be a factor that can be multiplied into existing Hartle–Hawking or tunneling
+measures.
+
+The intent is to give a clean, reproducible bridge: for any early-universe
+model that produces a well-defined exit anisotropy parameter, HHV–TRP provides
+a simple and testable mapping from that prediction to an observer-based
+viability bound
