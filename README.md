@@ -509,3 +509,25 @@ R_\star \exp(-\mu C_\star) = T_{\min}
 \]
 
 This is exactly what `TRPEngine._calibrate_mu()` computes.
+
+## 9. Tests
+
+Basic tests live in `tests/test_trp_engine.py`. They verify that:
+
+1. **Pivot calibration**  
+   At the Planck-like pivot \((N_e^\*, H_I^\*, \epsilon^\*)\),
+   `epsilon_max` reproduces `eps_star` (within numerical tolerance).
+
+2. **Monotonicity in \(H_I\)**  
+   For fixed \(N_e\), lower \(H_I\) (larger exit area/entropy) allows
+   larger \(|\epsilon|_{\max}\).
+
+3. **TRP suppression for large anisotropy**  
+   Choosing \(\epsilon \gg \epsilon^\*\) at the pivot drives
+   \(T(N_e^\*, H_I^\*, \epsilon)\) below \(T_{\min}\), as expected.
+
+To run the tests locally:
+
+```bash
+pip install pytest
+pytest
