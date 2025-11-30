@@ -376,6 +376,14 @@ print("|eps|_max at pivot:", eps_max_star)
 for HI in [1.8e-5, 1.0e-5, 5.0e-6]:
     print(HI, engine.epsilon_max(60.0, HI))
 
+### 6.3 Planck pivot example
+
+A more complete example using the `hhv_math` utilities and Planck-like
+parameters is provided in:
+
+```bash
+examples/pivot_from_planck.py
+
 ## 8. References and source-backed formulas
 
 This section lists the main external physics results used in this repo,
