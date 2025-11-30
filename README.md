@@ -384,6 +384,13 @@ parameters is provided in:
 ```bash
 examples/pivot_from_planck.py
 
+### 6.4 Grid scan example
+
+For a more systematic calculation, see:
+
+```bash
+examples/scan_grid.py
+
 ## 8. References and source-backed formulas
 
 This section lists the main external physics results used in this repo,
