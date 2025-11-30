@@ -9,6 +9,14 @@ Checks:
   3. Larger r -> larger H_I and larger V^(1/4).
 """
 
+import os
+import sys
+
+# Ensure project root is on sys.path so 'hhv_math' can be imported
+ROOT = os.path.dirname(os.path.dirname(__file__))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
 import numpy as np
 
 from hhv_math import inflation, cmb_params
