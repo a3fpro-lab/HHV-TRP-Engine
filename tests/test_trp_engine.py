@@ -13,6 +13,9 @@ These tests verify:
 
 3. TRP suppression for large anisotropy:
    For eps >> eps_star at the pivot, T falls below T_min.
+
+4. TRP factorization:
+   decompose_T returns T = R * P and matches T(Ne,HI,eps).
 """
 
 import os
@@ -112,3 +115,35 @@ def test_T_violates_for_too_large_eps():
         f"expected T < T_min for large eps={eps_big:.3g}, "
         f"got T={T_val:.6g} >= T_min={engine.T_min:.6g}"
     )
+
+
+def test_TRP_factorization_decompose_T():
+    """
+    Check that decompose_T returns R, P, T with:
+
+      T_dec = R * P
+
+    and that this matches the direct T(Ne,HI,eps) evaluation.
+    """
+    engine, Ne_star, HI_star, eps_star = make_engine_from_planck()
+
+    # Sample a small grid around the pivot
+    Ne_list = [Ne_star - 5.0, Ne_star, Ne_star + 5.0]
+    HI_factors = [0.7, 1.0, 1.3]
+    eps_list = [0.0, 0.5 * eps_star, eps_star]
+
+    for Ne in Ne_list:
+        for f in HI_factors:
+            HI = HI_star * f
+            for eps in eps_list:
+                Rval, Pval, T_dec = engine.decompose_T(Ne, HI, eps)
+                T_dir = engine.T(Ne, HI, eps)
+
+                # T must equal R * P and match direct evaluation
+                assert np.isclose(
+                    T_dec, Rval * Pval, rtol=1e-12, atol=0.0
+                ), "decompose_T does not satisfy T = R * P"
+
+                assert np.isclose(
+                    T_dec, T_dir, rtol=1e-12, atol=0.0
+                ), "decompose_T T does not match direct T(Ne,HI,eps)"
